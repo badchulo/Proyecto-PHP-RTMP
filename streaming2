@@ -1,0 +1,21 @@
+<?php
+$link=mysql_connect("127.0.0.1", "root", "BNddxc1O");
+$db=mysql_select_db("prueba",$link) OR DIE ("Error: No es posible establecer la conexión");
+$existe=0;
+$contador=0
+$nombre=$_POST["call"];
+$result = mysql_query("SELECT nombre FROM streaming");
+while ($row = mysql_fetch_array($result, MYSQL_BOTH)) {
+if ($row["nombre"]=$nombre) {
+$existe=1;
+$contador=$contador + 1;
+}
+
+if ($existe=0) {
+
+$sql="INSERT INTO streaming (nombre, contador) VALUES ('$_POST[call]','$contador')";
+mysqli_query($link, $sql);
+}
+echo "hola";
+?>
+
